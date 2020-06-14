@@ -40,22 +40,17 @@ The next *n* lines are as follows: <br>
 where dim1, ... , dimd is the *d*-dimensional representation learned by *node2vec*. <br>
 
 
-# 2. Train a LSTM classifier using learned embedding and erichment features derived from KEGG and GO, including version with Synthetic Minority Over-sampling Technique (SMOTE) and without SMOTE, which is integrated in imbalanced-learn.
+# 2. Train a LSTM classifier using learned embedding and erichment features derived from KEGG and GO with Synthetic Minority Over-sampling Technique (SMOTE), which is integrated in imbalanced-learn.
 
 In this study, rnnloc mainly consists of the following five components: 1) learned embedding from a protein-protein network using node2vec; 
 2) enrichment feautres derived from KEGG and GO terms; 3)SMOTE for oversampling minority classes; 4) a LSTM classifier for classifying 16 subcellular locations. 
-5) decision tree for generating classification rules. Please refer to 2.2 for how to run rnnloc for classifying and predicting protein subcellular locations.<br>
+5) decision tree in scikit-learn for generating classification rules. Please refer to 2.2 for how to run rnnloc for classifying and predicting protein subcellular locations.<br>
 
 Here we provided the final optmized 550-D feautres from embedding and enrichment features. You can use it to do 10-fold cross-validaiton as done in our paper.
 
 You can test rnnloc on the uploaded subc_human_n2v_GO_KEGG_mRMR_550.arff.gz using 10-fold cross-validation as done in paper. <br>
 
-## 2.1 Train and test LSTM classifier without SMOTE for oversampling.
-1. Evaluate the LSTM classifier without SMOTE for over-sampling using 10-fold cross-validaiton:<br>
-``` python3 rnn-kfold-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
-where -c is the number of classes, --datapath is the training file with embedding as features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
-
-## 2.2 Train and test LSTM classifier with SMOTE for oversampling.
+## Train and test LSTM classifier with SMOTE for oversampling.
 1. Evaluate LSTM classifier with SMOTE for over-sampling using 10-fold cross-validaiton:<br>
 ``` python3 rnn-kfold-smote-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
 where -c is the number of classes, --datapath is the training file with embedding and enrichment features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
