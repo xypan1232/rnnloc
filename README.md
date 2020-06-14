@@ -56,3 +56,6 @@ You can test rnnloc on the uploaded subc_human_n2v_GO_KEGG_mRMR_550.arff.gz usin
 ``` python3 rnn-kfold-smote-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
 where -c is the number of classes, --datapath is the training file with embedding and enrichment features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
 
+##  Generate classificaiton rules using decision trees
+``` python rules_smote_count.py --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff > rules_file``` <br>
+
