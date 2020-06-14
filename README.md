@@ -67,8 +67,3 @@ where -c is the number of classes, --datapath is the training file with embeddin
 ```python3 rnn-smote-pred-run.py --train train_dataset.csv --test test_dataset.csv``` <br>
 where --train is the input training data, and --test is the input test data. This program will predict the locaitons for all proteins in test set using the trained node2loc model on train set.<br>
 
-
-# 3. Visualize the learned embedding using TSNE, which is implemented in sklearn.
-You can  run ```python3 vis_embedding.py ``` <br>
-here we visualize the learned embedding (train_dataset.csv decompressed from train_dataset.zip) for proteins in the benchmark set. <br>
-
