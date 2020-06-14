@@ -42,22 +42,21 @@ where dim1, ... , dimd is the *d*-dimensional representation learned by *node2ve
 
 # 2. Train a LSTM classifier using learned embedding and erichment features derived from KEGG and GO, including version with Synthetic Minority Over-sampling Technique (SMOTE) and without SMOTE, which is integrated in imbalanced-learn.
 
-In this study, node2loc mainly consists of the following three components: 1) learned embedding from a protein-protein network using node2vec; 2) SMOTE for oversampling minority classes; 3) a LSTM classifier for classifying 16 subcellular locations. Please refer to 2.2 for how to run node2loc for classifying and predicting protein subcellular locations.<br>
+In this study, rnnloc mainly consists of the following five components: 1) learned embedding from a protein-protein network using node2vec; 
+2) enrichment feautres derived from KEGG and GO terms; 3)SMOTE for oversampling minority classes; 4) a LSTM classifier for classifying 16 subcellular locations. 
+5) decision tree for generating classification rules. Please refer to 2.2 for how to run rnnloc for classifying and predicting protein subcellular locations.<br>
 
-Here we provided the learned embedding with 500-D learned from a human protein-protein network. To yield higher performance, you can use Minimum redundancy maximum relevance (<a href="http://home.penglab.com/proj/mRMR/index.htm">mRMR</a>) to reorder the embedding, then train and evaluate each feature subset using IFS with RNN, and select the feature subset with the best performance. <br>
+Here we provided the final optmized 550-D feautres from embedding and enrichment features. You can use it to do 10-fold cross-validaiton as done in our paper.
 
-The dataset with 500-D embedding as reprenstations for proteins and subcellular locaitons as labels is given in this repository, including training and test set file. The training file is "train_dataset.zip", and you can decompress it to "train_dataset.csv" that is the embedding of proteins, and "train_sample.txt" that is the protein IDs as sample names. The mapping between label ID and subcellular locations is given in file labelID_to_locations. The test file test_dataset.zip contains the embedding for other proteins not in the benchmakr set and protein names correpsond to the embedding, and we want to predict the locations for them. <br>
-
-You can test node2loc on the uploaded train_dataset.zip using k-fold crossvalidation. <br>
-You can also predict the location for the proteins in test_dataset.zip using the trained node2loc model on train_dataset.zip. The output file gives the predicted locations for all proteins in the test set. <br>
+You can test rnnloc on the uploaded subc_human_n2v_GO_KEGG_mRMR_550.arff.gz using 10-fold cross-validation as done in paper. <br>
 
 ## 2.1 Train and test LSTM classifier without SMOTE for oversampling.
-1. Train the LSTM classifier without SMOTE for over-sampling:<br>
+1. Evaluate the LSTM classifier without SMOTE for over-sampling using 10-fold cross-validaiton:<br>
 ``` python3 rnn-kfold-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
-where -c is the number of classes, --datapath is the training file with embedding as features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the node2loc using k-fold cross-validation. <br>
+where -c is the number of classes, --datapath is the training file with embedding as features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
 
 ## 2.2 Train and test LSTM classifier with SMOTE for oversampling.
-1. Train the LSTM classifier with SMOTE for over-sampling:<br>
+1. Evaluate LSTM classifier with SMOTE for over-sampling using 10-fold cross-validaiton:<br>
 ``` python3 rnn-kfold-smote-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
-where -c is the number of classes, --datapath is the training file with embedding and enrichment features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the node2loc using k-fold cross-validation. <br>
+where -c is the number of classes, --datapath is the training file with embedding and enrichment features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
 
