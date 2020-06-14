@@ -8,6 +8,7 @@ In this study, we use two types of features and combine them to construct the mo
   * <a href=https://github.com/scikit-learn-contrib/imbalanced-learn>imbalanced-learn</a> <br>
   * <a href=https://www.tensorflow.org/> TensorFlow 1.10+ </a> <br>
   * Python 3.6 <br>
+  * <a href=https://github.com/scikit-learn-contrib/boruta_py>boruta feature selection</a> <br>
   
 ## OS Requirements
 This package is supported for *Linux* operating systems. The package has been tested on the following systems: <br>
