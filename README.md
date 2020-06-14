@@ -44,7 +44,8 @@ where dim1, ... , dimd is the *d*-dimensional representation learned by *node2ve
 
 In this study, rnnloc mainly consists of the following five components: 1) learned embedding from a protein-protein network using node2vec; 
 2) enrichment feautres derived from KEGG and GO terms; 3)SMOTE for oversampling minority classes; 4) a LSTM classifier for classifying 16 subcellular locations. 
-5) decision tree in scikit-learn for generating classification rules. Please refer to 2.2 for how to run rnnloc for classifying and predicting protein subcellular locations.<br>
+5) decision tree in scikit-learn for generating classification rules. <br>
+Please see below to knwo how to run rnnloc for classifying and predicting protein subcellular locations.<br>
 
 Here we provided the final optmized 550-D feautres from embedding and enrichment features. You can use it to do 10-fold cross-validaiton as done in our paper.
 
