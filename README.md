@@ -40,7 +40,7 @@ The next *n* lines are as follows: <br>
 where dim1, ... , dimd is the *d*-dimensional representation learned by *node2vec*. <br>
 
 
-# 2. Train a LSTM classifier using learned embedding and erichment features derived from KEGG and GO with Synthetic Minority Over-sampling Technique (SMOTE), which is integrated in imbalanced-learn.
+# 2. Train a LSTM classifier using learned embedding and enrichment features derived from KEGG and GO with Synthetic Minority Over-sampling Technique (SMOTE), which is integrated in imbalanced-learn.
 
 In this study, rnnloc mainly consists of the following five components: 1) learned embedding from a protein-protein network using node2vec; 
 2) enrichment feautres derived from KEGG and GO terms; 3)SMOTE for oversampling minority classes; 4) a LSTM classifier for classifying 16 subcellular locations. 
