@@ -50,13 +50,13 @@ Please see below to knwo how to run rnnloc for classifying and predicting protei
 
 Here we provided the final optmized 550-D feautres from embedding and enrichment features. You can use it to do 10-fold cross-validaiton as done in our paper.
 
-You can test rnnloc on the uploaded subc_human_n2v_GO_KEGG_mRMR_550.arff.gz using 10-fold cross-validation as done in paper. <br>
+You can test rnnloc on the uploaded subcellular_location_n2v_GO_KEGG_refine_t_100_n_400_550.csv.gz using 10-fold cross-validation as done in paper. <br>
 
 ## Evaluate LSTM classifier with SMOTE for oversampling using 10-fold cross-validation on the final optimized 550-D features.
 1. Evaluate LSTM classifier with SMOTE for over-sampling using 10-fold cross-validaiton:<br>
-``` python3 rnn-kfold-smote-run.py -c 16 --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff -e 500 -u 400 -k 10``` <br>
+``` python3 rnn-kfold-smote-run.py -c 16 --datapath subcellular_location_n2v_GO_KEGG_refine_t_100_n_400_550.csv -e 500 -u 400 -k 10``` <br>
 where -c is the number of classes, --datapath is the training file with embedding and enrichment features, locations as the labels, -e is the dimension of embedding, -u is number of neurons in the hidden layer of LSTM, k is k-fold cross-validation. This program will evaluate the rnnloc using k-fold cross-validation. <br>
 
 ##  Generate classificaiton rules using decision trees
-``` python rules_smote_count.py --datapath subc_human_n2v_GO_KEGG_mRMR_550.arff > rules_file``` <br>
+``` python rules_smote_count.py --datapath subcellular_location_n2v_GO_KEGG_refine_t_100_n_400_550.csv > rules_file``` <br>
 
