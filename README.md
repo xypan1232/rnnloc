@@ -59,4 +59,4 @@ where -c is the number of classes, --datapath is the training file with embeddin
 
 ##  Generate classificaiton rules using decision trees
 ``` python rules_smote_count.py --datapath subcellular_location_n2v_GO_KEGG_refine_t_100_n_400_550.csv > rules_file``` <br>
-
+here we use 550-D features as an example, in the paper, we run decision trees on the 3190-D features, which are too big and cannot be uploaded in this repository.
